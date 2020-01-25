@@ -92,6 +92,14 @@ abstract class HttpClient
         ]))->getBody()->jsonSerialize();
     }
 
+    private function putFile(string $path, string $body = null, array $headers = []) : ?object
+    {
+        return ($this->lastResponse = $this->httpClient->put($path, [
+            'body' => $body,
+            'headers' => $headers
+        ]))->getBody()->jsonSerialize();
+    }
+
     private function putMultiPart(string $path, $body = null, array $headers = []) : object
     {
         return ($this->lastResponse = $this->httpClient->put($path, [

@@ -30,9 +30,6 @@ class Account extends Model
 
     public int $loopsConsumedCount;
 
-
-    private ?object $cache = null;
-
     public function __construct(\GuzzleHttp\Client $client, object $data)
     {
         parent::__construct($client);
@@ -51,5 +48,10 @@ class Account extends Model
         $this->followingCount = $data->followingCount;
         $this->loopCount = $data->loopCount;
         $this->loopsConsumedCount = $data->loopsConsumedCount;
+    }
+
+    public function raw() : object
+    {
+        return $this->cache ??= $this->get('account/id/' . $this->id);
     }
 }
