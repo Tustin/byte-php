@@ -62,9 +62,17 @@ abstract class HttpClient
         ]))->getBody()->jsonSerialize();
     }
 
-    private function delete(string $path, array $headers = []) : object
+    private function delete(string $path, array $headers = []) : ?object
     {
         return ($this->lastResponse = $this->httpClient->delete($path, [
+            'headers' => $headers
+        ]))->getBody()->jsonSerialize();
+    }
+
+    private function deleteJson(string $path, array $body, array $headers = []) : ?object
+    {
+        return ($this->lastResponse = $this->httpClient->delete($path, [
+            'json' => $body,
             'headers' => $headers
         ]))->getBody()->jsonSerialize();
     }
