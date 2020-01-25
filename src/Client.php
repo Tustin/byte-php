@@ -42,7 +42,7 @@ class Client extends HttpClient
      * Create a new Client instance.
      *
      * @param array $guzzleOptions Guzzle options
-     * @return \Tustin\CallOfDuty\Client
+     * @return \Tustin\Byte\Client
      */
     public static function create(array $guzzleOptions = []) : Client
     {
@@ -55,7 +55,7 @@ class Client extends HttpClient
      * @Temp: This will be temporary until I can reverse their Google client_id and cient_secret and implement Google sign-in.
      *
      * @param string $token Authorization token
-     * @return Client
+     * @return \Tustin\Byte\Client
      */
     public function login(string $token) : Client
     {
